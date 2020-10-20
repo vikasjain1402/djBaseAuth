@@ -22,7 +22,7 @@ def login(request):
         return render(request,'base.html',context)
 
 def signup(request):
-    print(request.method)
+
     if request.method=='POST':
         form=Signupform(request.POST)
         username = form.data['username']
@@ -32,7 +32,6 @@ def signup(request):
         firstname = form.data['firstname']
         lastname = form.data['lastname']
         if len(User.objects.filter(username=username)) ==0:
-            print("user doesnt exist can continue.....")
             try:
                 user=User.objects.create_user(username=username,password=password,email=email,first_name=firstname,last_name=lastname)
                 user.save()
