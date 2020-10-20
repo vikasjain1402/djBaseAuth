@@ -31,9 +31,13 @@
             </li>
         </li>
       </ll>
+
+
+
       <li class="navbar-nav mr-auto">
           {% if user.is_authenticated %}
-            <li class="nav-item active" href="#">welcome {{user.email}}</li>
+            <li class="nav-item active" href="#">welcome {{user.firstname}}</li>
+        `   <li> <img src="{{user.profilepic}}" style='width:2em'></li>
             <li class="nav-item active"><a  href="/logout">Logout</a></li>
           {% else %}
             <form action="/" method="POST">
@@ -62,9 +66,8 @@
 </div>
     {% endfor %}
     {% endif %}
-
   <div class="container">
-      <form action="/signup" method="POST">
+      <form action="/signup" method="POST" enctype="multipart/form-data">
                   {% csrf_token %}
                     {{ signupform.as_ul }}
                         {% if signupform %}
