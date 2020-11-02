@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate,login as login_user,logout as logout_user
 from .forms import Loginform,Signupform
 from .models import Profile as User
+
+
 def login(request):
     if request.method=='POST':
         form = Loginform(request.POST)
